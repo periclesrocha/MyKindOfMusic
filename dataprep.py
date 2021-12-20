@@ -7,7 +7,6 @@ import numpy as np
 import os
 import pandas as pd
 import pickle
-#import shutil
 import spacy
 import sys
 import time
@@ -23,8 +22,8 @@ from textblob import TextBlob   #Required for language detection
 acceptedArgs = ['full','verse','line']
 scope = 'verse' #Default
 
-songFile  = 'TextRetrieval/music.csv'
-indexFile = 'TextRetrieval/bm25.pkl'
+songFile  = 'music.csv'
+indexFile = 'bm25.pkl'
 
 if (len(sys.argv)) > 1: # If parameters passed, see if it is accepted
     scope = sys.argv[1].lower()

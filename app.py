@@ -1,7 +1,6 @@
 from better_profanity import profanity
 import pandas as pd
 import pickle
-#from rank_bm25 import BM25Okapi
 import streamlit as st
 
 musicServiceURL = 'https://music.youtube.com/search?q='
@@ -73,8 +72,8 @@ def renderWebApp():
 
     # Read music dataset (csv) and the inverted index dictionary (bm5.pkl)
 
-    df_read = pd.read_csv("TextRetrieval/music.csv")
-    with open("TextRetrieval/bm25.pkl", "rb") as tf:
+    df_read = pd.read_csv("music.csv")
+    with open("bm25.pkl", "rb") as tf:
         bm25_read = pickle.load(tf)
 
     df_read.sentiment = df_read.sentiment.astype('int')
@@ -146,8 +145,5 @@ def renderWebApp():
     st.markdown("""***""")
     st.caption('"My Kind of Music", by Gunther Bacellar and Pericles Rocha',)
     st.caption('github.com/periclesrocha/CourseProject')
-    #st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
-    # st.write("Find a song on your desired mood and keywords")
-    #st.markdown("##### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
 
 renderWebApp()

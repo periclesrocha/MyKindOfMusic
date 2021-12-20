@@ -1,11 +1,17 @@
-FROM python:3.7-slim
-COPY . /app
+FROM python:3.9.5-slim-buster
+
+ENV PYTHONUNBUFFERED 1
+
 WORKDIR /app
-RUN pip install -r requirements.txt
+
+ADD requirements.txt ./requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+ADD app.py ./app.py
+COPY music.csv ./music.csv
+COPY bm25.pkl ./bm25.pkl
+COPY .streamlit /root/.streamlit
+
 EXPOSE 80
-RUN mkdir ~/.streamlit
-RUN cp config.toml ~/.streamlit/config.toml
-RUN cp credentials.toml ~/.streamlit/credentials.toml
-WORKDIR /app
-ENTRYPOINT ["streamlit", "run"]
-CMD ["app.py"]
+
+CMD [ "streamlit", "run", "app.py" ]

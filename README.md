@@ -1,5 +1,5 @@
 > Video presentation/tutorial: https://youtu.be/RMCBQ7bltt0 <br/>
-> Try our app: https://musicmood.azurewebsites.net  <br/>
+> Try our app: https://mykindofmusic.azurewebsites.net/  <br/>
 
 # My Kind of Music - project documentation
 
@@ -29,7 +29,8 @@ Table of contents:
     5. [Running the software](#runningthesoftware)
         1. [Data preparation (optional)](#datapreparation)
         2. [Running the web application](#runningthewebapplication)
-4. [Appendix](#appendix)
+4. [Credits](#credits)
+5. [Appendix](#appendix)
     1. [Appendix A: software usage tutorial presentation](#appendixa)
     2. [Appendix B: team member contribution](#appendixb)
     3. [Appendix C: credit and references](#appendixc)
@@ -337,6 +338,12 @@ Your browser should open automatically:
 </p>
 
 > NOTE: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
+
+## Credits  <a name="credits"></a>
+This project is used for educational purposes only. It was built as a class project for the CS 410 Text Information Systems fall 2021 class taught at the University of Illinois at Urbana-Champaign. 
+
+It uses the following resources: 
+- Lyrics databse: obtained from the Open Lyrics Database project: https://github.com/Lyrics/lyrics
 
 ## Appendix <a name="appendix"></a>
 ### Appendix A: software usage tutorial presentation <a name="appendixa"></a>
