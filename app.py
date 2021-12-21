@@ -109,6 +109,7 @@ def renderWebApp():
     profanity_filter = st.checkbox('Use profanity filter', value=True)
 
     mood = st.session_state['mood']
+
     if mood > 0 and query != "":
         try:
             # Apply the style to the selected button
@@ -119,7 +120,7 @@ def renderWebApp():
             tokenized_query = query.lower().split(" ")
             tokenized_query = [x for x in tokenized_query if x!=""]
             st.markdown(f"### <center>Some songs that suggest a *** {mood_list[mood-1]} *** mood</center>", unsafe_allow_html=True)
-            #st.write(f"Some songs that suggest the mood {mood_list[mood-1]}")
+
             # Find the results with best retrieval score in the bm25 dictionary
             results = bm25_read[mood].get_top_n(tokenized_query, df_mood.title.values, n=10)
             col6, col7 = st.columns(2)
@@ -139,11 +140,14 @@ def renderWebApp():
                     songName = results[i]
                     produceSongResult(i, artist, songName, profanity_filter)
 
+            print('[User query] Mood: ' + str(mood) + '; Query: ' + str(query) + '; Profanity filter: ' + str(profanity_filter))
+
         except Exception as e:
             st.error("Error entering your query")
             st.write(e)
+
     st.markdown("""***""")
     st.caption('"My Kind of Music", by Gunther Bacellar and Pericles Rocha',)
-    st.caption('github.com/periclesrocha/CourseProject')
+    st.caption('github.com/periclesrocha/MyKindOfMusic')
 
 renderWebApp()
