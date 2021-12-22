@@ -71,7 +71,6 @@ def renderWebApp():
         st.session_state['mood'] = 0
 
     # Read music dataset (csv) and the inverted index dictionary (bm5.pkl)
-
     df_read = pd.read_csv("music.csv")
     with open("bm25.pkl", "rb") as tf:
         bm25_read = pickle.load(tf)
@@ -139,8 +138,6 @@ def renderWebApp():
                     # This will be needed for the lyrics in case we decide to show it too 
                     songName = results[i]
                     produceSongResult(i, artist, songName, profanity_filter)
-
-            print('[User query] Mood: ' + str(mood) + '; Query: ' + str(query) + '; Profanity filter: ' + str(profanity_filter))
 
         except Exception as e:
             st.error("Error entering your query")

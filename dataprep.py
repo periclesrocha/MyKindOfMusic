@@ -174,11 +174,11 @@ def categorizeSongs(scope):
     
     # Holds the count of songs categorized in each category
     songsByCategory = {
-    '1_very_bad': 0,
-    '2_bad': 0,
-    '3_neutral': 0,
-    '4_good': 0,
-    '5_very_good': 0
+        '1_very_bad': 0,
+        '2_bad': 0,
+        '3_neutral': 0,
+        '4_good': 0,
+        '5_very_good': 0
     }
 
     print('')
@@ -201,7 +201,7 @@ def categorizeSongs(scope):
                 artistPath = os.path.join(letterPath, artist)
                 if os.path.isdir(artistPath):
                     albums = sorted(os.listdir(artistPath), key=str.lower)
-                    # .. then through albuns... 
+                    # .. then through albums... 
                     for album in albums:
                         albumPath = os.path.join(artistPath, album)
                         if os.path.isdir(albumPath):
@@ -229,21 +229,20 @@ def categorizeSongs(scope):
                                                 nonEnglishSongsCount += 1
                                                 nonEnglishSongs.append('(' + songLanguage + '): ' + songPath)
                                             else:
-                                                # Run sentiment analyzis and get the compound score. Categorize the song lyrics with a sentiment 1 to 5: 
+                                                # Run sentiment analysis and get the compound score. Categorize the song lyrics with a sentiment 1 to 5: 
                                                 # 1 Very bad    : compound  < -0.6
                                                 # 2 Bad         : compound >= -0.6 and < -0.2
                                                 # 3 Neutral     : compound >= -0.2 and <= 0.2
                                                 # 4 Good        : compound  >  0.2 and <= 0.6
                                                 # 5 Very Good   : compound  >  0.6
 
-                                                # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
+                                                # Remove stop words - EVALUATE IF THIS YELD BETTER RESULTS OR NOT
                                                 lyricsNoStopWords = removeStopWords(lyrics)
 
                                                 # Get the compound sentiment. Can be full lyrics, verse or line averages
                                                 compound = getAverageCompound(lyricsNoStopWords,scope, True, song)
 
                                                 # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
-
                                                 # ... when we DO categorize songs and want to make them available for search, 
                                                 # they will be stored in their original form.
 
@@ -293,7 +292,7 @@ def categorizeSongs(scope):
     try:
         songData.to_csv(songFile)
     except Exception as e:
-        print('Processing succedded, but failed to write songData file')
+        print('Processing succeeded, but failed to write songData file')
         print('Exception: ', e)
 
     print('Sentiment Analysis categorization complete. Songs were categorized on', songFile)
@@ -329,7 +328,7 @@ def categorizeSongs(scope):
         logFile.write('Short lyric files...: ' + str(shortLyricsCount) +'\n')
         logFile.write('Non-english songs...: ' + str(nonEnglishSongsCount)+'\n')    
         logFile.write('Songs failed........: ' + str(failedSongsCount) +'\n')
-        logFile.write('Songs per category..: ' + '\n' )
+        logFile.write('Songs per category..: ' + '\n')
         logFile.write(' --- 1-Very bad.........: ' + str(songsByCategory['1_very_bad']) +'\n')
         logFile.write(' --- 2-Bad..............: ' + str(songsByCategory['2_bad']) +'\n')
         logFile.write(' --- 3-Neutral..........: ' + str(songsByCategory['3_neutral']) +'\n')
@@ -381,8 +380,10 @@ def categorizeSongs(scope):
 # ------------------------------------------------------------------------
 print('===============================================================================================================')
 print('||                               MY KIND OF MUSIC - DATA PREPARATION SCRIPT                                  ||')
-print('|| Song Sentiment Analysis | V1 | written by Peri Rocha for CS410 Text Information Systems at UIUC           ||')
-print('|| Text Retrieval indexing | V1 | written by Gunther  Bacellar for CS410 Text Information Systems at UIUC    ||')
+print('|| Song Sentiment Analysis | V1 | written by Peri Rocha                                                      ||')
+print('|| Text Retrieval indexing | V1 | written by Gunther Bacellar                                                ||')
+print('|| built for CS410 Text Information Systems at University of Illinois at Urbana-Champaign                    ||')
+print('||                                                                                                           ||')
 print('|| Use of parts of this program is free as long as we are cited as the source                                ||')
 print('|| github.com/periclesrocha                                                                                  ||')
 print('===============================================================================================================')
